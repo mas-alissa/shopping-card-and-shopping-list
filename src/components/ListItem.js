@@ -1,7 +1,12 @@
 
-function ListItem(title) {
+function ListItem({item,clickItem}) {
   return (
-   <li>{title.name}</li>
+   <li
+   key={item.id}
+   className="list-item"
+   onClick={() => clickItem(item)}
+   value={item.title}
+   >{item.title}</li>
   )
 }
 
