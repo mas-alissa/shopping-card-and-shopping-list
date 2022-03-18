@@ -1,12 +1,16 @@
 
-function ListItem({item,clickItem}) {
+function ListItem({item,handleClickGroceryItem}) {
   return (
-   <li
+   <>
+     {handleClickGroceryItem ? <li
    key={item.id}
    className="list-item"
-   onClick={() => clickItem(item)}
+   onClick={() => handleClickGroceryItem(item)}
    value={item.title}
-   >{item.title}</li>
+   >{item.title}</li> : <li key={item.id}
+   className="list-item-1"
+   value={item.title}>{item.title}</li>}
+   </>
   )
 }
 

@@ -1,0 +1,7 @@
+.list-item:nth-child(odd){
+background-color:brown;
+}
+
+.list-item-1:nth-child(odd){
+    background-color:cadetblue;
+    }
