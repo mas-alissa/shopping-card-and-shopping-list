@@ -1,9 +1,13 @@
+import InputField from "./InputField";
 import List from "./List";
 
 export default function GroceryList(props) {
   return (
-   
-        <List handleClickGroceryItem={props.handleClickGroceryItem} groceryItems={props.groceryItems}/>
+   <>
+   <InputField setValue={props.setValue} value={props.value}/>
+   <button onClick={props.addItem}>Add</button>
+    <List handleClickGroceryItem={props.handleClickGroceryItem} groceryItems={props.groceryItems}/>
+   </>
     
   )
 }

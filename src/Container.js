@@ -10,10 +10,13 @@ class Container extends React.Component {
             { id: 1, title: "Appels" },
             { id: 2, title: "kiwi" }
         ],
-        shoppingListItems:[]
+        shoppingListItems:[],
+        value : "",
         }
         this.handleClickGroceryItem = this.handleClickGroceryItem.bind(this)
         this.emptyCart = this.emptyCart.bind(this)
+        this.setValue = this.setValue.bind(this)
+        this.addItem = this.addItem.bind(this)
     }   
     handleClickGroceryItem(item){
       this.setState({
@@ -25,11 +28,33 @@ class Container extends React.Component {
         shoppingListItems : []
       })
     }
+    
+    setValue(text){
+      this.setState({
+        value:text
+      })
+    }
+
+    addItem(){
+      const obj = {id:this.state.groceryItems.length + 1, title:this.state.value}
+      if(this.state.value === ""){
+        alert("You must put something in the text field!!")
+      } else {
+        this.setState({
+          groceryItems:this.state.groceryItems.concat(obj),
+          value:""
+        })
+      }
+    }
+   
+
   render() {
-    console.log(this.state.shoppingListItems)
+    
+   
     return (
+     
       <div>
-          <GroceryList  groceryItems={this.state.groceryItems} handleClickGroceryItem={this.handleClickGroceryItem} />
+          <GroceryList  groceryItems={this.state.groceryItems} handleClickGroceryItem={this.handleClickGroceryItem} setValue={this.setValue} addItem={this.addItem} value={this.state.value} />
           <ShoppingCart groceryItems={this.state.shoppingListItems} emptyCart={this.emptyCart}/>
       </div>
     )
