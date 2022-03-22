@@ -7,8 +7,8 @@ class Container extends React.Component {
         super()
         this.state = {
             groceryItems: [
-            { id: 1, title: "Appels" },
-            { id: 2, title: "kiwi" }
+            { id: 1, title: "Appels", amount:0 },
+            { id: 2, title: "kiwi", amount:0 }
         ],
         shoppingListItems:[],
         value : "",
@@ -19,8 +19,17 @@ class Container extends React.Component {
         this.addItem = this.addItem.bind(this)
     }   
     handleClickGroceryItem(item){
-      this.setState({
-        shoppingListItems : this.state.shoppingListItems.concat(item)
+      
+     //const x = {...item,amount:item.amount +=1}
+     
+      this.setState(prevState => {
+        console.log(prevState)
+        const x = prevState.shoppingListItems.indexOf(item) === -1 ? {...item,amount:item.amount + 1} : this.state.shoppingListItems
+        console.log([x])
+       return {
+         
+        shoppingListItems :prevState.shoppingListItems.indexOf(item) === -1 ? {...item,amount:item.amount + 1} : this.state.shoppingListItems
+       } 
       })
     }
     emptyCart(){
@@ -49,8 +58,7 @@ class Container extends React.Component {
    
 
   render() {
-    
-   
+    console.log(this.state.shoppingListItems)
     return (
      
       <div>
